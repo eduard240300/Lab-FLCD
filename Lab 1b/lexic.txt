@@ -5,9 +5,9 @@ Alphabet:
 	1. Lexic:
 	a.Special symbols, representing:
 		- operators + - * / = < <= = >=
-		- separators ( ) , ; space newline tab
+		- separators ( ) [ ] , ; space newline tab
 		- reserved words:
-			start stop array char integer boolean string appointment date let if else then read while read print for from to
+			start stop array char integer boolean string appointment date let if else then read while print for from to
 	b.identifiers
 		-a sequence of letters and digits, such that the first character is a letter; the rule is:
 		identifier = letter | letter{letter}{digit}

@@ -1,20 +1,20 @@
-program = "VAR" decllist ";" cmpdstmt "."
-decllist = declaration | declaration ";" decllist
-declaration = IDENTIFIER ":" type
-type1 = "BOOLEAN" | "CHAR" | "INTEGER" | "REAL"
+program = "START" decllist cmpdstmt "STOP"
+decllist = declaration | declaration decllist
+declaration = "LET" IDENTIFIER type
+type1 = "INTEGER" | "CHARACTER" | "BOOLEAN" | "STRING" | "DATE" | "APOINTMENT"
 arraydecl = "ARRAY" "[" nr "]" "OF" type1
 type = type1|arraydecl
-cmpdstmt = "BEGIN" stmtlist "END"
-stmtlist = stmt | stmt ";" stmtlist
+cmpdstmt = stmtlist
+stmtlist = stmt | stmt stmtlist
 stmt = simplstmt | structstmt
 simplstmt = assignstmt | iostmt
-assignstmt = IDENTIFIER ":=" expression
-expression = expression "+" term | term
-term = term "*" factor | factor
+assignstmt = IDENTIFIER "=" expression
+expression = expression "+" term | expression "-" term | term
+term = term "*" factor | term "/" factor | factor
 factor = "(" expression ")" | IDENTIFIER
-iostmt = "READ" | "WRITE" "(" IDENTIFIER ")"
+iostmt = "READ" | "PRINT" IDENTIFIER
 structstmt = cmpdstmt | ifstmt | whilestmt
-ifstmt = "IF" condition "THEN" stmt ["ELSE" stmt]
-whilestmt = "WHILE" condition "DO" stmt
-condition = expression RELATION expression
+ifstmt = "IF" condition "THEN" stmt ["ELSE THEN" stmt] "STOP IF"
+whilestmt = "WHILE" condition "DO" stmt "STOP WHILE"
+condition = factor RELATION expression
 RELATION = "<" | "<=" | "=" | "<>" | ">=" | ">"
