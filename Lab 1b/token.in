@@ -20,6 +20,7 @@ to
 +
 -
 *
+%
 /
 =
 <
@@ -32,12 +33,12 @@ to
 ]
 ,
 ;
-space
-newline
-tab
+==
 integer
 character
 boolean
 string
 date
-apointment
+appointment
+true
+false

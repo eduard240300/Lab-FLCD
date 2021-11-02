@@ -6,8 +6,8 @@ let integer 1a // 1a is not permited
 read a
 let integer i
 let boolean isPrime = false
-for i from 1 to (a / 2)
-	if (a % i) == 0 then
+for i from 1 to ( a / 2 )
+	if ( a % i ) == 0 then
 		isPrime = true
 	stop if
 stop for

@@ -37,6 +37,25 @@ class symbolTable:
                 index += 1
             return self.hash(symbol, index)
 
+    def listAll(self, filename):
+        st = open(filename, "w")
+        index = 0
+        for token in self.__hashMap:
+            if not(token is None):
+                st.write(str(index) + " " + token + "\n")
+            index = index + 1
+        st.close()
+
+    def printPif(self, pifKeys, pifValues, filename):
+        pifFile = open(filename, "w")
+        index = 0
+        for key in pifKeys:
+            if pifValues[index] == -1:
+                pifFile.write(key + " " + str(self.find(key)) + '\n')
+            else:
+                pifFile.write(key + " " + str(pifValues[index]) + '\n')
+            index = index + 1
+
     def add(self, symbol):
         if self.find(symbol) is not None:
             return self.find(symbol)
