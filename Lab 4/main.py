@@ -1,16 +1,28 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from finiteAutomata import FiniteAutomata
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def run_menu(fa):
+    options = [fa.printStates, fa.printAlphabet, fa.printTransitions, fa.printStates, fa.isAccepted]
+    while True:
+        print("1. Show States")
+        print("2. Show Alphabet")
+        print("3. Show All The Transitions")
+        print("4. Show Final States")
+        print("5. Is a sequence accepted?")
+        print("0. Exit")
+
+        choice = int(input(">> "))
+        if choice > len(options):
+            print("Invalid command!\n")
+        if choice == 0:
+            return
+        if choice == 5:
+            sequence = int(input("Sequence: "))
+            options[choice - 1](sequence)
+        else:
+            options[choice - 1]()
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    finite_automata = FiniteAutomata('fa.in')
+    run_menu(finite_automata)
